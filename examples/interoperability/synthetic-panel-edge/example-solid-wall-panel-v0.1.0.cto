@@ -65,7 +65,7 @@
         "y": 8.0,
         "z": 0.5
       },
-      "description": "Synthetic occupied envelope in product-local feet. It is not a shipping, fabrication, or installation envelope."
+      "description": "Synthetic physical shipping envelope as manufactured, expressed in product-local feet for this fixture."
     },
     "chase_zones": [],
     "opening_geometry": null,

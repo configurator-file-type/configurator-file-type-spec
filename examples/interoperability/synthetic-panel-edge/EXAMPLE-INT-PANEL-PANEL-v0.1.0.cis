@@ -62,9 +62,5 @@
     }
   ],
   "utility_connections": [],
-  "structural_connections": [],
-  "tolerances": {
-    "global_position_in": 0.125,
-    "description": "Fixture-only positional tolerance. No construction or fabrication tolerance is asserted."
-  }
+  "structural_connections": []
 }

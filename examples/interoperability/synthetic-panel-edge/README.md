@@ -28,6 +28,24 @@ Two independent configurators should be able to:
 
 The public repository is the review surface for the shared files. It is not a Registry database and does not define a submission API. A Registry may ingest an approved version, preserve its identity and digest, and make that exact version available to configurators.
 
+## Fixture-local coordinate and derivation assumptions
+
+The CIS side-plane coordinates follow CIS v0.1.3 section 6.3: the origin is the bottom-left corner when facing the side, X points right, and Y points up. This fixture maps those coordinates onto the CTO product as follows:
+
+| CIS side-plane value | CTO product-local interpretation in this fixture |
+| --- | --- |
+| Side-plane X | Product-local Z across the six-inch panel edge when facing the addressed left or right face |
+| Side-plane Y | Product-local Y (vertical) |
+| Side-plane origin | Bottom-left corner of the addressed product face as viewed facing that face |
+
+This mapping is local to the fixture because CTO v0.2.0 and CIS v0.1.3 do not yet define a normative face-to-side coordinate transform.
+
+CIS v0.1.3 section 6.4 makes `mirror_of` generative: the derived port position is `(W - x, y)` and a gendered connection signature becomes its registered complement. For this fixture, the derived `side_b` port retains the source `port_id` of `alignment_center` for lookup. Because the source port is centered on the six-inch side, `(3, 48)` remains `(3, 48)` after mirroring, while `alignment_pin_F` becomes `alignment_pin_M`. The `alignment_pin_F` and `alignment_pin_M` complementary pair is registered in CIS v0.1.3 Appendix F. Retaining the source port identifier is a fixture-local assumption pending a normative rule.
+
+The port-level `tolerance_in` is the only positional tolerance used by these test vectors. No precedence between global and port-specific tolerances is asserted.
+
+The CTO `geometry.bounding_box` uses the specification meaning: the physical shipping envelope of the product as manufactured. Its dimensions are synthetic fixture data and do not constitute fabrication instructions, engineering approval, or a claim about a real product.
+
 ## Test-vector interpretation
 
 `test-vectors.json` is a fixture-specific sidecar, not part of the CTO or CIS specifications. Its result codes are local to this example.
